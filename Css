@@ -1,56 +1,216 @@
-<nav class="dropdownmenu">
-	<ul>
-		<li><a href="https://cpj.org/">Home</a></li>
-		<li><a href="https://github.com/BuzzyCT">About Me</a></li>
-		<li><a href="https://en.wikipedia.org/wiki/Category:Murdered_journalists">List of Dead Journalist</a>
+body {
+  margin: 1;
+  font-family: Helvetica, sans-serif;
+  background-color: #f4f4f4;
+}
 
-		</li>
-		<li><a href="https://cpj.org/news/">News</a></li>
+a {
+  color: #000;
+}
 
-	</ul>
-</nav>
+/* header */
 
-<article class="article">
-	<header class="header">
-		<div class="category"></div>
-		<h1>
-			The Crimes On Journalist In Other Countries
-		</h1>
-		<div class="meta">
-			<span class="author">by <span class="author-name">Sage Lucio</span></span>
-			<span class="pub-date"></span>
-		</div>
-	</header>
+.header {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 4px 8px 0 rgba(0,0,0,.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
 
-	<p>nothing here yet</p>
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+}
 
-	<p>Same here</p>
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+}
 
-	<p>these parts will be very long with articles in them</p>
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #f4f4f4;
+}
 
-	<figure>
-		<img src="https://cdn.pixabay.com/photo/2022/05/12/21/48/21-48-40-593_960_720.png" alt="American style pancakes">
-		<figcaption><strong>Figure 1.</strong> The stats of those who were killed 1995-2021</figcaption>
-	</figure>
-	<h2>heading 2</h2>
-	<p>
-		more will go here
-	</p>
-	<h2>Gonna do somehting with this</h2>
-	<h3>Article 1</h3>
-	<p>(article here)</p>
-	<h3>Article 2</h3>
-	<p>soemthing here</p>
-	<!-- <figure>
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/8533/nalesniki.jpg" alt="Polish nalesniki">
-    <figcaption><strong>Figure 2.</strong> Polish style stuffed crepes.</figcaption>
-  </figure> -->
-	<h3>Article 3</h3>
-	<p>You know the drill</p>
-	<h3>Article 4</h3>
-	<p>yep same as before</p>
-	<h2>Finshing statement</h2>
-	<p>yep</p>
-</article>
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
 
-gonna be some info gui down here
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+
+  * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+   /* Unitless == good */
+  color: #333333;
+  font-size: 22px;
+  line-height: 1.75;
+}
+
+.category {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffaa44;
+}
+
+.article {
+  width: 100%; /* default */
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 60px 30px;
+}
+
+.meta {
+}
+
+.author {
+  display: inline-block;
+  background-color: #ffaa44;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 20px;
+  margin-right: 15px;
+}
+
+.pub-date {
+  line-height: 1;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  
+}
+
+h1 {
+  font-size: 2.232em; /* line-height: 3 * 1.75 em; */
+  line-height: 1;
+}
+
+h2 {
+  font-size: 1.826em;
+  line-height: 1;
+}
+
+h3 {
+  font-size: 1.494em;
+  line-height: 1.2;
+}
+
+
+figure {
+  padding: 0;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
